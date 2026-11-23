@@ -7,9 +7,8 @@
   --ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box}
-html,body{height:100%}
 body{
-  margin:0;display:grid;place-items:center;padding:28px;
+  margin:0;min-height:100%;display:grid;place-items:center;padding:28px;
   background:
     radial-gradient(900px 520px at 50% -10%,rgba(157,184,168,.07),transparent 70%),
     radial-gradient(700px 420px at 90% 110%,rgba(215,169,123,.06),transparent 70%),
@@ -25,53 +24,122 @@ body::before{
 a{color:inherit;text-decoration:none}
 .mono{font-family:var(--mono);font-weight:400}
 .wrap{position:relative;z-index:1;width:min(720px,100%)}
-.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:36px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:34px}
 .brand{display:flex;align-items:center;gap:9px;font-size:.82rem;letter-spacing:.02em;color:var(--body)}
 .mark{display:grid;place-items:center;width:26px;height:26px;border:1px solid var(--line-2);border-radius:7px;color:var(--accent)}
 .code{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
 .num{
-  font-family:var(--display);font-weight:400;font-size:clamp(5.2rem,22vw,11rem);
+  font-family:var(--display);font-weight:400;font-size:clamp(5rem,21vw,10.5rem);
   line-height:.86;letter-spacing:-.03em;margin:0;
   background:linear-gradient(180deg,var(--ink),rgba(238,240,241,.22));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .num i{font-style:italic;color:var(--accent);-webkit-text-fill-color:var(--accent)}
-h1{
-  margin:14px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,4.2vw,2.1rem);
-  line-height:1.16;letter-spacing:-.01em;max-width:22ch;
-}
+h1{margin:14px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,4.2vw,2.1rem);line-height:1.16;letter-spacing:-.01em;max-width:22ch}
 .lead{margin:14px 0 0;max-width:46ch;font-size:.94rem;color:var(--body)}
-.term{
-  margin:30px 0 0;border:1px solid var(--line-2);border-radius:12px;background:rgba(13,15,17,.82);
-  overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);
-}
+.term{margin:28px 0 0;border:1px solid var(--line-2);border-radius:12px;background:rgba(13,15,17,.85);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
 .term__bar{display:flex;align-items:center;gap:7px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--surface-2)}
 .term__bar b{width:8px;height:8px;border-radius:50%;background:rgba(238,240,241,.18)}
 .term__bar span{margin-left:6px;font-size:.64rem;letter-spacing:.1em;color:var(--dim);font-family:var(--mono)}
-.term__body{padding:16px;font-family:var(--mono);font-size:.78rem;line-height:1.85;min-height:104px}
-.term__body p{margin:0}
-.term__body .q{color:var(--sage)}
-.term__body .e{color:#d98b7b}
-.term__body .c{color:var(--muted)}
-.caret{display:inline-block;width:7px;height:13px;margin-left:4px;background:var(--accent);vertical-align:-2px;animation:blink 1.05s steps(1) infinite}
+.term__body{padding:14px 16px 16px;font-family:var(--mono);font-size:.78rem;line-height:1.85;max-height:230px;overflow-y:auto}
+.term__line{margin:0;white-space:pre-wrap;word-break:break-word}
+.term__line .q{color:var(--sage)}
+.term__line .e{color:#d98b7b}
+.term__line .c{color:var(--muted)}
+.term__line .ok{color:var(--sage)}
+.term__form{display:flex;align-items:center;gap:8px;margin-top:6px}
+.term__form .q{color:var(--sage)}
+.term__in{flex:1;min-width:0;border:0;background:none;outline:none;color:var(--ink);font-family:var(--mono);font-size:.78rem;padding:0}
+.term__in::placeholder{color:var(--dim)}
+.caret{display:inline-block;width:7px;height:13px;margin-left:2px;background:var(--accent);vertical-align:-2px;animation:blink 1.05s steps(1) infinite}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;
-  font-size:.78rem;letter-spacing:.01em;border:1px solid var(--line-2);color:var(--body);
-  transition:transform .3s var(--ease),background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease);
-}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-size:.78rem;border:1px solid var(--line-2);color:var(--body);transition:transform .3s var(--ease),background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
 .btn:hover{transform:translateY(-1px)}
 .btn--solid{background:var(--ink);color:#0a0b0c;border-color:transparent;font-weight:500}
 .btn--solid:hover{background:#fff}
 .btn--line:hover{background:rgba(255,255,255,.05);border-color:rgba(238,240,241,.26);color:var(--ink)}
-.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;margin-top:34px;font-size:.66rem;color:var(--dim);font-family:var(--mono)}
+.hintline{margin-top:16px;font-size:.66rem;color:var(--dim);font-family:var(--mono)}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;margin-top:30px;font-size:.66rem;color:var(--dim);font-family:var(--mono)}
 :focus-visible{outline:1px solid var(--accent);outline-offset:3px}
-@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}</style></head><body><div class="wrap"><div class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg> </span>RaufixBaba </a><span class="code">durum / 404</span></div><p class="num">4<i>0</i>4</p><h1>Böyle bir sayfa yok.</h1><p class="lead">Adresi yanlış yazmış olabilirsin, sayfa taşınmış olabilir ya da bu kapı hiç var olmadı. İzinsiz giriş denemesi diye bir şey varsa, onu da buraya yazmadım :d</p><div class="term" aria-hidden="true"><div class="term__bar"><b></b><b></b><b></b><span>raufix@baba: ~/site</span></div><div class="term__body"><p><span class="q">$</span> get <span id="termPath">/bu-sayfa</span></p><p><span class="e">err</span> 404 — dosya bulunamadı<span class="caret"></span></p><p class="c">ipucu: ana sayfaya dönmek en kısa yol</p></div></div><div class="acts"><a class="btn btn--solid" href="/">Ana sayfaya dön <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg> </a><a class="btn btn--line" href="https://github.com/RealRaufixBaba" target="_blank" rel="noopener">GitHub profili ↗</a></div><div class="foot"><span>RaufixBaba — İstanbul</span> <span>build → ship → repeat</span></div></div><script>(function(){
-  var p = document.getElementById("termPath");
-  if (p && location.pathname && location.pathname !== "/") {
+@media (max-width:520px){.term__body{font-size:.72rem}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}</style></head><body><div class="wrap"><div class="top"><a class="brand" href="/"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg> </span>RaufixBaba </a><span class="code">durum / 404</span></div><p class="num">4<i>0</i>4</p><h1>Böyle bir sayfa yok.</h1><p class="lead">Adresi yanlış yazmış olabilirsin, sayfa taşınmış olabilir ya da bu kapı hiç var olmadı. Aşağıdaki terminale bir iki komut yazabilirsin, sıkılmazsın.</p><div class="term"><div class="term__bar"><b></b><b></b><b></b><span>raufix@baba: ~/site</span></div><div class="term__body" id="termBody"><p class="term__line"><span class="q">$</span> get <span id="termPath">/bu-sayfa</span></p><p class="term__line"><span class="e">err</span> 404 — dosya bulunamadı</p><p class="term__line c">yardım için <span class="ok">help</span> yaz, ana sayfa için <span class="ok">home</span></p><div class="term__form"><span class="q">$</span> <input class="term__in" id="termIn" placeholder="komut yaz…" autocomplete="off" spellcheck="false" aria-label="Terminal komutu"/></div></div></div><div class="acts"><a class="btn btn--solid" href="/">Ana sayfaya dön <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg> </a><a class="btn btn--line" href="https://github.com/RealRaufixBaba" target="_blank" rel="noopener">GitHub profili ↗</a></div><p class="hintline">kısayol: bu sayfada hiçbir yere tıklamadan da <strong>home</strong> yazabilirsin</p><div class="foot"><span>RaufixBaba — İstanbul</span> <span>build → ship → repeat</span></div></div><script>(function(){
+  var body = document.getElementById("termBody");
+  var input = document.getElementById("termIn");
+  var pathEl = document.getElementById("termPath");
+  var form = body ? body.querySelector(".term__form") : null;
+
+  if (pathEl && location.pathname && location.pathname !== "/") {
     var path = decodeURIComponent(location.pathname);
     if (path.length > 46) path = path.slice(0, 46) + "…";
-    p.textContent = path;
+    pathEl.textContent = path;
   }
+
+  function print(html, cls) {
+    if (!body || !form) return;
+    var p = document.createElement("p");
+    p.className = "term__line" + (cls ? " " + cls : "");
+    p.innerHTML = html;
+    body.insertBefore(p, form);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  var commands = {
+    help: function() {
+      print('<span class="ok">help</span> bu listeyi yazar');
+      print('<span class="ok">ls</span> bölümleri listeler');
+      print('<span class="ok">home</span> ana sayfaya götürür');
+      print('<span class="ok">whoami</span> kim olduğunu söyler');
+      print('<span class="ok">clear</span> ekranı temizler');
+    },
+    ls: function() {
+      print('<span class="c">hikaye/  isler/  yetenekler/  yolculuk/  notlar/  iletisim/</span>');
+      print('<span class="c">bu klasörde yalnızca 404 var</span>');
+    },
+    home: function() {
+      print('<span class="ok">yönlendiriliyor…</span>');
+      setTimeout(function() { location.href = "/"; }, 380);
+    },
+    cd: function(arg) {
+      if (!arg || arg === "/" || arg === "..") return commands.home();
+      print('<span class="e">cd:</span> ' + arg + ' yok. <span class="c">ls</span> yaz, bak.');
+    },
+    whoami: function() {
+      print('<span class="ok">ziyaretçi</span> <span class="c">— kayıt altına alınmadın, rahat ol</span>');
+    },
+    sudo: function() {
+      print('<span class="e">izin yok.</span> <span class="c">zaten her şey açıkta :d</span>');
+    },
+    pwd: function() {
+      print('<span class="c">/site/kayip-bolum</span>');
+    },
+    clear: function() {
+      Array.prototype.slice.call(body.querySelectorAll(".term__line")).forEach(function(el) { el.remove(); });
+    }
+  };
+
+  function run(raw) {
+    var line = raw.trim();
+    if (!line) return;
+    print('<span class="q">$</span> ' + line.replace(/[<>&]/g, ""));
+    var parts = line.split(/\s+/);
+    var cmd = parts[0].toLowerCase();
+    if (commands[cmd]) commands[cmd](parts.slice(1).join(" "));
+    else print('<span class="e">komut bulunamadı:</span> ' + cmd + ' <span class="c">— help yaz</span>');
+  }
+
+  if (input) {
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        run(input.value);
+        input.value = "";
+      }
+    });
+    setTimeout(function() { input.focus(); }, 300);
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && document.activeElement !== input) location.href = "/";
+  });
 })();</script></body></html>
